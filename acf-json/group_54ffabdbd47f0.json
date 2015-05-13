@@ -81,9 +81,9 @@
         ],
         [
             {
-                "param": "post_type",
-                "operator": "==",
-                "value": "people"
+                "param": "page_template",
+                "operator": "!=",
+                "value": "template-content-manager.php"
             }
         ]
     ],
@@ -93,5 +93,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1429843179
+    "modified": 1431491623
 }

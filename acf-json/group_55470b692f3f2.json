@@ -3,9 +3,9 @@
     "title": "Content Page - Review Wireframe",
     "fields": [
         {
-            "key": "field_554717be71ce3",
-            "label": "Wireframe_repeater",
-            "name": "wireframe_repeater",
+            "key": "field_5552d5358d3ff",
+            "label": "Wireframe",
+            "name": "wireframe",
             "prefix": "",
             "type": "repeater",
             "instructions": "",
@@ -22,12 +22,50 @@
             "button_label": "Add Row",
             "sub_fields": [
                 {
-                    "key": "field_554717d671ce4",
-                    "label": "File",
+                    "key": "field_5552d4b68d3fe",
+                    "label": "Link",
+                    "name": "link",
+                    "prefix": "",
+                    "type": "url",
+                    "instructions": "{themename\/wireframes\/{number}",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "\/content-manger\/wireframes\/1",
+                    "placeholder": ""
+                }
+            ]
+        },
+        {
+            "key": "field_554717be71ce3",
+            "label": "Design",
+            "name": "design",
+            "prefix": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": "",
+            "max": "",
+            "layout": "table",
+            "button_label": "Add Row",
+            "sub_fields": [
+                {
+                    "key": "field_5552d4999b842",
+                    "label": "file",
                     "name": "file",
                     "prefix": "",
-                    "type": "file",
-                    "instructions": "",
+                    "type": "gallery",
+                    "instructions": "Select the current designs",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -35,41 +73,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
+                    "min": "",
+                    "max": "",
+                    "preview_size": "medium",
                     "library": "all",
+                    "min_width": "",
+                    "min_height": "",
                     "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
                     "max_size": "",
-                    "mime_types": ".zip"
-                },
-                {
-                    "key": "field_55470d5bb4d1a",
-                    "label": "Type of Design",
-                    "name": "type_of_design",
-                    "prefix": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "Wireframe": "Wireframe",
-                        "Design": "Design",
-                        "Html": "Html"
-                    },
-                    "default_value": {
-                        "": ""
-                    },
-                    "allow_null": 0,
-                    "multiple": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "disabled": 0,
-                    "readonly": 0
+                    "mime_types": ""
                 }
             ]
         }
@@ -77,9 +91,9 @@
     "location": [
         [
             {
-                "param": "page",
+                "param": "page_template",
                 "operator": "==",
-                "value": "64"
+                "value": "template-content-manager.php"
             }
         ]
     ],
@@ -89,5 +103,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1430722543
+    "modified": 1431498027
 }
