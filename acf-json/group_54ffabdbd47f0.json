@@ -17,10 +17,9 @@
                 "id": ""
             },
             "choices": {
-                "1": "No content",
-                "2": "Draft Content",
-                "3": "Approved content",
-                "4": "Styling completed"
+                "1": "Not supplied",
+                "2": "Applied to page",
+                "4": "Approved by client"
             },
             "other_choice": 0,
             "save_other_choice": 0,
@@ -28,29 +27,12 @@
             "layout": "horizontal"
         },
         {
-            "key": "field_54ffc15ea3408",
-            "label": "Approve",
-            "name": "approve",
-            "prefix": "",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0
-        },
-        {
             "key": "field_54ffc0e0a3407",
-            "label": "Upload Content",
+            "label": "Upload New Content",
             "name": "upload_content",
             "prefix": "",
             "type": "file",
-            "instructions": "",
+            "instructions": "If you haven't uploaded the latest version of your content, please use the upload feature below. \r\nNOTE: If you have recently updated your content and it is not showing on this page yet you do not need to upload content again.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -63,6 +45,23 @@
             "min_size": "",
             "max_size": 20,
             "mime_types": ""
+        },
+        {
+            "key": "field_54ffc15ea3408",
+            "label": "Approve Final Content is on this page",
+            "name": "approve",
+            "prefix": "",
+            "type": "true_false",
+            "instructions": "If the content on this page is correct please use the approval tick box below. Please make sure that you have carefully checked all the content on the page before doing so. ",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Approve final page content",
+            "default_value": 0
         }
     ],
     "location": [
@@ -94,5 +93,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1429828282
+    "modified": 1429843179
 }

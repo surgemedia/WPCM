@@ -1,11 +1,11 @@
 {
-    "key": "group_54ffabdbd47f0-2",
-    "title": "Page & Post - Design stages",
+    "key": "group_54ffabdbd47f0",
+    "title": "Page & Post - Content stages",
     "fields": [
         {
-            "key": "field_55075f8de939b",
+            "key": "field_54ffabf216b64",
             "label": "Sign Off Level",
-            "name": "sign_off_level_design",
+            "name": "sign_off_level",
             "prefix": "",
             "type": "radio",
             "instructions": "",
@@ -18,22 +18,22 @@
             },
             "choices": {
                 "1": "No content",
-                "2": "Draft Design",
-                "3": "Approved Design",
+                "2": "Draft Content",
+                "3": "Approved content",
                 "4": "Styling completed"
             },
             "other_choice": 0,
             "save_other_choice": 0,
-            "default_value": "",
+            "default_value": "No Content",
             "layout": "horizontal"
         },
         {
-            "key": "field_55075f7ab29fb",
-            "label": "Wireframe Aprove",
-            "name": "wireframe_aprove_design",
+            "key": "field_54ffc15ea3408",
+            "label": "Approve",
+            "name": "approve",
             "prefix": "",
             "type": "true_false",
-            "instructions": "By ticking this you confirm that you have seen and approved the design for this page.",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -41,16 +41,16 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Make sure before ticking, press 'View Page' Approve to see the current design.",
+            "message": "",
             "default_value": 0
         },
         {
-            "key": "field_554710796fd12",
-            "label": "Graphic Design Approve",
-            "name": "graphic_design_approve",
+            "key": "field_54ffc0e0a3407",
+            "label": "Upload Content",
+            "name": "upload_content",
             "prefix": "",
-            "type": "true_false",
-            "instructions": "By ticking this you confirm that you have seen and approved the design for this page.",
+            "type": "file",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -58,8 +58,11 @@
                 "class": "",
                 "id": ""
             },
-            "message": "Make sure before ticking, press 'View Page' Approve to see the current design.",
-            "default_value": 0
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": 20,
+            "mime_types": ""
         }
     ],
     "location": [
@@ -81,7 +84,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "post"
+                "value": "people"
             }
         ]
     ],
@@ -91,5 +94,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1430721115
+    "modified": 1429828282
 }
