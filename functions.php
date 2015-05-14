@@ -9,6 +9,8 @@
  *
  * @link https://github.com/roots/sage/pull/1042
  */
+$GLOBALS['WPCM_id'] = 18; //Change for each website
+
 $sage_includes = [
   'lib/utils.php',                 // Utility functions
   'lib/init.php',                  // Initial theme setup and constants

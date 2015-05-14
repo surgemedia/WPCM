@@ -47,7 +47,7 @@
   </div>
   <!-- Design Tray -->
   <div class="tray collapse" id="collapseDesign<?php echo get_the_id() ?>">
-  <h1><i class="glyphicon glyphicon-sunglasses"></i>  <span>Design</span></h1>
+  <h1><i class="glyphicon glyphicon-picture"></i>  <span>Design</span></h1>
   <ul>
     <li><span>Page Name: </span><b><?php the_title();?></b></li>
     <li><span>Your design is currently in: </span><span class="label <?php echo $color_design; ?>"> <?php echo $label_design; ?></span>  </li>
@@ -140,7 +140,14 @@
     </div>
   </div>
   <!-- Design Tray -->
-  <div class="tray collapse" id="collapseDesign<?php  echo $child->ID ?>">
+   <div class="tray collapse" id="collapseDesign<?php echo get_the_id() ?>">
+  <h1><i class="glyphicon glyphicon-picture"></i>  <span>Design</span></h1>
+  <ul>
+    <li><span>Page Name: </span><b><?php the_title();?></b></li>
+    <li><span>Your design is currently in: </span><span class="label <?php echo $color_design; ?>"> <?php echo $label_design; ?></span>  </li>
+    <li><span>To make any changes to this page</span> <a class="btn btn-info " href="<?php echo get_permalink();?>">Click Here</a></li>
+  </ul>
+  <?php /* ?>
   <i class="glyphicon glyphicon-sunglasses"></i>  <span>Design</span> 
   <span class="label <?php echo $color_design; ?>"> <?php echo $label_design; ?></span>
   <hr>
@@ -149,12 +156,13 @@
       <?php 
       acf_form(array(
         'field_groups' => 'group_54ffabdbd47f0-2',
-        'post_id' => $child->ID,
+        'post_id' => get_the_id(),
         'post_title'  => false,
         'fields' => ['aprove_design'],
         'submit_value'  => 'Update Page Data'
       )); ?>
     </div>
+  */ ?>
   </div>
     <!-- Final Signoff -->
   <div class="tray collapse" id="collapseSignoff<?php  echo $child->ID ?>">

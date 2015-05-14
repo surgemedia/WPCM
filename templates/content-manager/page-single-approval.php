@@ -1,5 +1,6 @@
 <?php
-include ('vars-acf-fields.php'); ?>
+include ('vars-acf-fields.php');
+ ?>
 <?php
 $args = array('post_parent' => get_the_id(), 'post_type' => 'page', 'posts_per_page' => - 1, 'post_status' => 'any',);
 ?>
@@ -14,10 +15,10 @@ $childs = get_children($args, $output); ?>
     <i class="glyphicon glyphicon-text-color"></i><span>Content Review</span>
   </a>
   <div id="content-childern" class="childern collapse">
-    <a class="btn pull-right  " href="<?php echo $post->post_name; ?>/?view=view-text">
+    <a class="btn pull-right  " href="<?php echo get_permilink() ?>/?view=view-text">
     <i class="glyphicon glyphicon-eye-open"></i><span>View Text</span>
     </a>
-    <a class="btn pull-right  " href="<?php echo $post->post_name; ?>/?view=edit-text">
+    <a class="btn pull-right  " href="<?php echo get_permalink(); ?>/?view=edit-text">
     <i class="glyphicon glyphicon-pencil"></i><span>Edit Text</span>
      </a>
   </div>
@@ -28,13 +29,15 @@ $childs = get_children($args, $output); ?>
     <i class="fa-picture-o fa"></i>   <span>Design Review</span>
   </a>
   <div id="design-childern" class="childern collapse">
-<?php $wf_list = get_field('wireframe',18); ?>
+<?php $wf_list = get_field('wireframe',$GLOBALS["WPCM_id"]); ?>
 <?php for ($i=0; $i < count($wf_list); $i++) { ?>
+<?php if(isset($wf_list[$i]['link'])): ?>
   <a class="btn pull-right  wireframe" href="<?php echo $wf_list[$i]['link'] ?>" >
     <i class="verison-number">V<?php echo $i+1 ?></i><span>Wireframe</span>
     </a>
+  <?php endif; ?>
 <?php } ?>
-<?php $gd_list = get_field('design',18); ?>
+<?php $gd_list = get_field('design',$GLOBALS["WPCM_id"]); ?>
 
 <?php for ($i=0; $i < count($gd_list); $i++) { ?>
   <a class="btn pull-right  design" href="<?php echo get_site_url().'/design-review/'."?v=".$i."?page=0" ?>">
@@ -54,17 +57,17 @@ $childs = get_children($args, $output); ?>
   </li>
 
   <li>
-    <a href="/content-manger/content-manager/" class="btn pull-right ">
+    <a href="<?php echo get_permalink($GLOBALS["WPCM_id"]); ?>" class="btn pull-right ">
       <i class="glyphicon glyphicon-link"></i> <span>All Pages</span>
     </a>
   </li>
 </ul>
   <?php
-include ('part-content-modal.php'); ?>
+//include ('part-content-modal.php'); ?>
   <?php
-include ('part-design-modal.php'); ?>
+//include ('part-design-modal.php'); ?>
   <?php
-include ('part-signoff-modal.php'); ?>
+//include ('part-signoff-modal.php'); ?>
 
 
 
