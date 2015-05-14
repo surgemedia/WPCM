@@ -3,50 +3,6 @@
     "title": "Page & Post - Content stages",
     "fields": [
         {
-            "key": "field_54ffabf216b64",
-            "label": "Sign Off Level",
-            "name": "sign_off_level",
-            "prefix": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "1": "Not supplied",
-                "2": "Applied to page",
-                "4": "Approved by client"
-            },
-            "other_choice": 0,
-            "save_other_choice": 0,
-            "default_value": "No Content",
-            "layout": "horizontal"
-        },
-        {
-            "key": "field_54ffc0e0a3407",
-            "label": "Upload New Content",
-            "name": "upload_content",
-            "prefix": "",
-            "type": "file",
-            "instructions": "If you haven't uploaded the latest version of your content, please use the upload feature below. \r\nNOTE: If you have recently updated your content and it is not showing on this page yet you do not need to upload content again.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "url",
-            "library": "all",
-            "min_size": "",
-            "max_size": 20,
-            "mime_types": ""
-        },
-        {
             "key": "field_54ffc15ea3408",
             "label": "Approve Final Content is on this page",
             "name": "approve",
@@ -93,5 +49,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1431491623
+    "modified": 1431560832
 }

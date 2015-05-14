@@ -23,16 +23,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "options_page",
                 "operator": "==",
-                "value": "post"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "page"
+                "value": ""
             }
         ]
     ],
@@ -42,6 +35,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1431491170,
-    "local": "json"
+    "modified": 1431561131
 }

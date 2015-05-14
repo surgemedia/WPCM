@@ -1,6 +1,6 @@
 <footer class="content-info" role="contentinfo">
 
-  <div class="container">
+  <!-- <div class="container">
   <div class="row">
   <div class="col-lg-16">
   	  <div class="col-sm-6">
@@ -12,7 +12,7 @@
   		<li><i class="fa fa-linkedin"></i></li>
   	</ul>
   </div>
-  </div>
+  </div> -->
   <?php
       if (has_nav_menu('footer')) :
         wp_nav_menu(['theme_location' => 'footer']);

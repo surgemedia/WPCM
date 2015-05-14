@@ -3,48 +3,6 @@
     "title": "Page & Post - Design stages",
     "fields": [
         {
-            "key": "field_55075f8de939b",
-            "label": "Sign Off Level",
-            "name": "sign_off_level_design",
-            "prefix": "",
-            "type": "radio",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "1": "No content",
-                "2": "Draft Design",
-                "3": "Approved Design",
-                "4": "Styling completed"
-            },
-            "other_choice": 0,
-            "save_other_choice": 0,
-            "default_value": "",
-            "layout": "horizontal"
-        },
-        {
-            "key": "field_55075f7ab29fb",
-            "label": "Wireframe Aprove",
-            "name": "wireframe_aprove_design",
-            "prefix": "",
-            "type": "true_false",
-            "instructions": "By ticking this you confirm that you have seen and approved the design for this page.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "Make sure before ticking, press 'View Page' Approve to see the current design.",
-            "default_value": 0
-        },
-        {
             "key": "field_554710796fd12",
             "label": "Graphic Design Approve",
             "name": "graphic_design_approve",
@@ -65,23 +23,9 @@
     "location": [
         [
             {
-                "param": "post_type",
+                "param": "options_page",
                 "operator": "==",
-                "value": "post"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "page"
-            }
-        ],
-        [
-            {
-                "param": "page_template",
-                "operator": "!=",
-                "value": "template-content-manager.php"
+                "value": ""
             }
         ]
     ],
@@ -91,5 +35,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1431491645
+    "modified": 1431560902
 }

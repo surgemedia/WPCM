@@ -39,19 +39,64 @@
     <body>
     <?php 
     $url = $_SERVER[REQUEST_URI];
-	$v = explode('v=',$url)[1];
+	$v_boom = explode('v=',$url)[1];
+	$v = explode('?',$v_boom)[0];
 	$page = explode('page=',$url)[1];
 
     $designs = get_field('design',18); 
-    $count = count(get_field('design',18)); 
-    debug($v)
+    $count = count(get_field('design',18));
+    $max_page = count(get_field('design',18)[$v]['file'])-1; 
+    debug($max_page);
     ?>
         <div class="text-center">
-            <img style="width:100%;" src="<?php echo get_field('design',18)[$view]['file'][$page]['url']; ?>" alt="">
+            <img style="width:100%;" src="<?php echo get_field('design',18)[$v]['file'][$page]['url']; ?>" alt="">
         </div>
         <!-- jQuery -->
         <script src="//code.jquery.com/jquery.js"></script>
         <!-- Bootstrap JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script>
+        document.onkeydown = checkKeycode;
+        function checkKeycode()
+		{
+  		var keycode;
+ 		 if (window.event)
+   		 keycode = window.event.keyCode;
+  		else
+   		 if (e) keycode = e.which;
+
+  		switch (keycode)
+ 		 {
+    		case 37:  // left arrow
+      		if(<?php echo $page-1 ?> != -1){
+      		new_url = window.location.href.split('page=')[0]+"page="+"<?php echo $page-1 ?>";
+      		document.location.href = new_url;
+      		}
+    		break;
+
+    		case 39:  // right arrow
+    		
+      		new_url = window.location.href.split('page=')[0]+"page="+"<?php echo $page+1 ?>";
+      		document.location.href = new_url;
+    		break;
+  		}
+		}
+		checkKeycode(e);
+        function nextImg(max){
+        	$('img').click(function(event) {
+        	var current;
+        	var new_url;
+        	current = window.location.href
+        	if(max != <?php echo $page ?>){
+        	new_url = window.location.href.split('page=')[0]+"page="+"<?php echo $page+1 ?>";
+        	} else {
+        	new_url = window.location.href.split('page=')[0]+"page="+<?php echo 0 ?>;
+        	}
+        	console.log(new_url)
+        	document.location.href = new_url;
+        	});
+        }
+        nextImg(<?php echo $max_page ?>);
+        </script>
     </body>
 </html>
