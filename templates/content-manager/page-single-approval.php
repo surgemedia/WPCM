@@ -15,7 +15,7 @@ $childs = get_children($args, $output); ?>
     <i class="glyphicon glyphicon-text-color"></i><span>Content Review</span>
   </a>
   <div id="content-childern" class="childern collapse">
-    <a class="btn pull-right  " href="<?php echo get_permilink() ?>/?view=view-text">
+    <a class="btn pull-right  " href="<?php echo get_permalink(); ?>/?view=view-text">
     <i class="glyphicon glyphicon-eye-open"></i><span>View Text</span>
     </a>
     <a class="btn pull-right  " href="<?php echo get_permalink(); ?>/?view=edit-text">
