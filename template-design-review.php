@@ -38,14 +38,29 @@
         cursor: pointer;
         }
          #prev {
-         	right: auto;
-         	left:0px;
+            right: auto;
+            left:0px;
          }
         #prev:hover,
         #next:hover {
             color: #fff;
             transition: 0.3s ease all;
             background: rgba(0,0,0,0.5);
+        }
+        .design-img {
+            width: 100% !important;
+            height: auto !important
+        }
+        .page-spacer {
+             padding: 3em 0;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+  color: #FFF;
+  background: #000;
+  display: block;
+  border: 4px solid #F00;
         }
         </style>
         <script type='text/javascript'>
@@ -69,10 +84,13 @@
         $designs = get_field('design',$GLOBALS['WPCM_id']);
         $count = count(get_field('design',$GLOBALS['WPCM_id']));
         $max_page = count(get_field('design',$GLOBALS['WPCM_id'])[$v]['file'])-1;
-       	
+        
         ?>
         <div class="text-center">
-            <img style="width:100%;" src="<?php echo get_field('design',$GLOBALS['WPCM_id'])[$v]['file'][$page]['url']; ?>" alt="">
+        <?php for ($i=0; $i < $count; $i++) { ?>
+            <img class="design-img" style="width:100%" src="<?php echo get_field('design',$GLOBALS['WPCM_id'])[$v]['file'][$i]['url']; ?>" alt="">
+            <span class="page-spacer"> NEXT PAGE BELOW </span>
+        <?php } ?>
         </div>
         <!-- jQuery -->
         <script src="//code.jquery.com/jquery.js"></script>
@@ -92,13 +110,10 @@
             console.log(new_url)
             document.location.href = new_url;
             });
-        
-         nextImg(max)
-        alert('To see the next page go to the right of the page and click the arrow.');
+            }
+         // nextImg(<?php echo $max_page ?>);
+       
         </script>
 
-
-        <span id="next"><i class="glyphicon glyphicon-triangle-right"></i></span>
-        <span id="prev"><i class="glyphicon glyphicon-triangle-left"></i></span>
     </body>
 </html>
