@@ -1,94 +1,55 @@
-<?php get_template_part('templates/content-single', get_post_type()); ?>
-<?php
-		$field = get_field_object('sign_off_level');
-		$value = get_field('sign_off_level');
-		$label = $field['choices'][ $value ];
-		$color = get_color($value,false);
+<?php while (have_posts()) : the_post(); ?>
+	<?php 
+// debug(get_id_from_slug('design-review'));
+ ?>
+<?php $page_id = get_the_ID(); ?>
+<?php create_design_page(); ?>
+<h1>Default Fields</h1>
+<?php 
 
-		$field_design = get_field_object('sign_off_level_design');
-		$value_design = get_field('sign_off_level_design');
-		$label_design = $field['choices'][$value_design];
-		$color_design = get_color($value_design,false);
+	echo "<pre>Title: ".get_the_title().'<br>';
+	echo "Content (WYSWIG): ".get_the_content()."</pre>";
 
-		?>
-<?php $args = array(
-	'post_parent' => get_the_id(),
-	'post_type'   => 'page',
-	'posts_per_page' => -1,
-	'post_status' => 'any', 
-	); 
-?>
-<?php $childs = get_children( $args, $output ); ?>
-<li class="parent">
-	<span class="col-sm-5"  >
-	<?php the_title();?>
-	</span>
-	<a target="_blank" class="btn btn-info pull-left" href="<?php echo get_permalink();?>">View Page</a>
-	<div class="btn <?php echo $color; ?> pull-left" data-toggle="collapse" href="#collapseContent<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseContent<?php echo get_the_id() ?>">
-		<i class="glyphicon glyphicon-text-color"></i>   <span>Content</span>  
-	</div>
-	<div class="btn <?php echo $color_design; ?> pull-left" data-toggle="collapse" href="#collapseDesign<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo get_the_id() ?>">
-		<i class="glyphicon glyphicon-sunglasses"></i>   <span>Design</span>  
-	</div>
-	<div class="btn label-default pull-left" data-toggle="collapse" href="#collapseSignoff<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo get_the_id() ?>">
-		<i class="glyphicon glyphicon-lock"></i>   <span>Final Signoff</span>  
-	</div>
-	<?php /* ?>
-	<span class="label <?php echo $color; ?>"> <?php echo $label; ?></span>
-	<?php */ ?>
+ ?>
+ <h2>Extra Fields</h2>
+	<?php 
+	$the_query = new WP_Query( array( 'post_type' => 'acf-field-group') );
 
-	<!-- Content tray -->
-	<div class="tray collapse" id="collapseContent<?php echo get_the_id() ?>">
-	<i class="glyphicon glyphicon-text-color"></i>  <span>Content</span>
-	<span class="label <?php echo $color; ?>"> <?php echo $label; ?></span>  
-	<hr>
-		<div class="inner">
-			
-			<?php 
-			acf_form(array(
-				'field_groups' => 'group_54ffabdbd47f0',
-				'post_id'	=> get_the_id(),
-				'post_title'	=> false,
-				'fields' => ['upload_content'],
-				'submit_value'	=> 'Update Page Data'
-			)); ?>
-		</div>
-	</div>
-	<!-- Design Tray -->
-	<div class="tray collapse" id="collapseDesign<?php echo get_the_id() ?>">
-	<i class="glyphicon glyphicon-sunglasses"></i>  <span>Design</span> 
-	<span class="label <?php echo $color_design; ?>"> <?php echo $label_design; ?></span>
-	<hr>
-		<div class="inner">
-			
-			<?php 
-			acf_form(array(
-				'field_groups' => 'group_54ffabdbd47f0-2',
-				'post_id'	=> get_the_id(),
-				'post_title'	=> false,
-				'fields' => ['aprove_design'],
-				'submit_value'	=> 'Update Page Data'
-			)); ?>
-		</div>
-	</div>
-		<!-- Final Signoff -->
-	<div class="tray collapse" id="collapseSignoff<?php echo get_the_id() ?>">
-		<i class="glyphicon glyphicon-lock"></i>  <span>Final Signoff</span>  
-	<hr>
+		// The Group Loop
+		if ( $the_query->have_posts() ) :
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+		  $group_ID = get_the_ID();
+		  $name = get_the_title();
+		  if($group_ID != 43){
+		  echo '<p>Field Group: '.$name.'</p>';
+					$field_query = new WP_Query( array( 'post_type' => 'acf-field','post_parent' => $group_ID, ) );
+					// The Group Loop
+					if ( $field_query->have_posts() ) :
+					while ( $field_query->have_posts() ) : 
+					 $field_query->the_post();
+					 $field_ID = get_the_ID();
+					 $name = get_the_title();
+					 $field_obj = get_post( $field_ID);
+					  // debug($field_obj);
+					
+					  echo '<pre>Field Name: '.$field_obj->post_title.'<br>';
+					  echo 'Field Type: ' .trim(explode(":",$field_obj->post_content)[6],';s'). '<br>';
 
-		<div class="inner">
-			
-			<?php 
-			acf_form(array(
-				'post_id'	=> get_the_id(),
-				'post_title'	=> false,
-				'fields' => ['final_approval'],
-				'submit_value'	=> 'Update Page Data'
-			)); ?>
-		</div>
-	</div>
+					  echo 'Field Content:'."";
+					  echo debug_notags(get_field($field_obj->post_name,$page_id))."</pre>";
+					  // echo '<dd>Field Type: ' .debug(explode(":",$field_obj->post_content)) . '</dd>';
+					  // echo '<dd>Field Type: ' .debug(explode(":",$field_obj->post_content)[4]) . '</dd>';
 
+				 	
 
-
-
-</li>
+					endwhile;
+					endif;
+					}
+		endwhile;
+		endif;
+		
+		// Reset Post Data
+		wp_reset_postdata();
+ ?>
+ <?php  ?>
+<?php endwhile; ?>

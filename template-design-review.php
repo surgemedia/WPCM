@@ -1,7 +1,8 @@
 <?php
 /**
-* Template Name: Design Review
+* Template Name: WPCPM - Design Review
 */
+$GLOBALS["WPCM_id"] = get_id_from_slug('design-review');
 ?>
 <!DOCTYPE html>
 <html lang="">
@@ -78,12 +79,20 @@
     <body>
         <?php
         $url = $_SERVER[REQUEST_URI];
+        // debug($url);
         $v_boom = explode('v=',$url)[1];
+        // debug($v_boom);
         $v = explode('?',$v_boom)[0];
+        // debug($v);
         $page = explode('page=',$url)[1];
+        // debug($page);
         $designs = get_field('design',$GLOBALS['WPCM_id']);
-        $count = count(get_field('design',$GLOBALS['WPCM_id']));
+        // echo "Designs";
+        // debug($designs);
+        $count = count(get_field('design',$GLOBALS['WPCM_id'])[0]['file']);
+        // debug("Count".$count);
         $max_page = count(get_field('design',$GLOBALS['WPCM_id'])[$v]['file'])-1;
+        // debug("Max Pages".$max_page);
         
         ?>
         <div class="text-center">

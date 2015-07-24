@@ -1,90 +1,56 @@
-<?php
-$url = $_SERVER[REQUEST_URI];
-$view = explode('view=',$url)[1];
-?>
-
 <?php while (have_posts()) : the_post(); ?>
-<?php if( $view == 'view-text' OR $view == ''): ?>
- <?php get_template_part('templates/page', 'header'); ?>
-  <?php get_template_part('templates/content', 'page'); ?>
-<?php endif; ?>
-<?php if( $view == 'edit-text'): ?>
 	<?php 
-	$options = array(
-
-	/* (string) Unique identifier for the form. Defaults to 'acf-form' */
-	'id' => 'acf-form',
-	
-	/* (int|string) The post ID to load data from and save data to. Defaults to the current post ID. 
-	Can also be set to 'new_post' to create a new post on submit */
-	'post_id' => false,
-	
-	/* (array) An array of post data used to create a post. See wp_insert_post for available parameters.
-	The above 'post_id' setting must contain a value of 'new_post' */
-	'new_post' => false,
-	
-	/* (array) An array of field group IDs/keys to override the fields displayed in this form */
-	'field_groups' => false,
-	
-	/* (array) An array of field IDs/keys to override the fields displayed in this form */
-	'fields' => false,
-	
-	/* (boolean) Whether or not to show the post title text field. Defaults to false */
-	'post_title' => true,
-	
-	/* (boolean) Whether or not to show the post content editor field. Defaults to false */
-	'post_content' => true,
-	
-	/* (boolean) Whether or not to create a form element. Useful when a adding to an existing form. Defaults to true */
-	'form' => true,
-	
-	/* (array) An array or HTML attributes for the form element */
-	'form_attributes' => array(),
-	
-	/* (string) The URL to be redirected to after the form is submit. Defaults to the current URL with a GET parameter '?updated=true'.
-	A special placeholder '%post_url%' will be converted to post's permalink (handy if creating a new post) */
-	'return' => '',
-	
-	/* (string) Extra HTML to add before the fields */
-	'html_before_fields' => '',
-	
-	/* (string) Extra HTML to add after the fields */
-	'html_after_fields' => '',
-	
-	/* (string) The text displayed on the submit button */
-	'submit_value' => __("Update", 'acf'),
-	
-	/* (string) A message displayed above the form after being redirected */
-	'updated_message' => __("Post updated", 'acf'),
-	
-	/* (string) Determines where field labels are places in relation to fields. Defaults to 'top'. 
-	Choices of 'top' (Above fields) or 'left' (Beside fields) */
-	'label_placement' => 'top',
-	
-	/* (string) Determines where field instructions are places in relation to fields. Defaults to 'label'. 
-	Choices of 'label' (Below labels) or 'field' (Below fields) */
-	'instruction_placement' => 'label',
-	
-	/* (string) Determines element used to wrap a field. Defaults to 'div' 
-	Choices of 'div', 'tr', 'td', 'ul', 'ol', 'dl' */
-	'field_el' => 'div',
-	
-	/* (string) Whether to use the WP uploader or a basic input for image and file fields. Defaults to 'wp' 
-	Choices of 'wp' or 'basic'. Added in v5.2.4 */
-	'uploader' => 'wp'
-	
-);
+// debug(get_id_from_slug('design-review'));
  ?>
- <?php acf_form($options); ?>
-<?php endif; ?>
+<?php $page_id = get_the_ID(); ?>
+<?php create_design_page(); ?>
+<h1>Default Content Fields</h1>
+<?php 
 
-<?php if( $view == 'bugs'): ?>
- <?php get_template_part('templates/page', 'header'); ?>
-  <?php get_template_part('templates/content', 'page'); ?>
-<?php endif; ?>
-<?php if( $view == 'signoff'): ?>
-  <?php get_template_part('templates/page', 'header'); ?>
-  <?php get_template_part('templates/content-manager', 'bugs'); ?>
-<?php endif; ?>
+	echo "<pre>Title: ".get_the_title().'<br>';
+	echo "Content (WYSWIG): ".get_the_content()."</pre>";
 
+ ?>
+ <h2>Extra Content Fields</h2>
+	<?php 
+	$the_query = new WP_Query( array( 'post_type' => 'acf-field-group') );
+
+		// The Group Loop
+		if ( $the_query->have_posts() ) :
+		while ( $the_query->have_posts() ) : $the_query->the_post();
+		  $group_ID = get_the_ID();
+		  $name = get_the_title();
+		  if($group_ID != 43){
+		  echo '<pre><h5><strong>Field Group: '.$name.'</strong></h5>';
+					$field_query = new WP_Query( array( 'post_type' => 'acf-field','post_parent' => $group_ID, ) );
+					// The Group Loop
+					if ( $field_query->have_posts() ) :
+					while ( $field_query->have_posts() ) : 
+					 $field_query->the_post();
+					 $field_ID = get_the_ID();
+					 $name = get_the_title();
+					 $field_obj = get_post( $field_ID);
+					  // debug($field_obj);
+					
+					  echo '<br>Field Name: '.$field_obj->post_title.'<br>';
+					  echo 'Field Type: ' .trim(explode(":",$field_obj->post_content)[6],';s'). '<br>';
+
+					  echo 'Field Content:'."";
+					  echo debug_notags(get_field($field_obj->post_name,$page_id))."<br>";
+					  // echo '<dd>Field Type: ' .debug(explode(":",$field_obj->post_content)) . '</dd>';
+					  // echo '<dd>Field Type: ' .debug(explode(":",$field_obj->post_content)[4]) . '</dd>';
+
+				 	
+
+					endwhile;
+					endif;
+					}
+					echo "</pre>";
+		endwhile;
+		endif;
+		
+		// Reset Post Data
+		wp_reset_postdata();
+ ?>
+ <?php  ?>
 <?php endwhile; ?>

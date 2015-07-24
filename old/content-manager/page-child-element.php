@@ -1,13 +1,13 @@
 <?php
-		$field = get_field_object('sign_off_level');
-		$value = get_field('sign_off_level');
-		$label = $field['choices'][ $value ];
-		$color = get_color($value,false);
+		// $field = get_field_object('sign_off_level');
+		// $value = get_field('sign_off_level');
+		// $label = $field['choices'][ $value ];
+		// $color = get_color($value,false);
 
-		$field_design = get_field_object('sign_off_level_design');
-		$value_design = get_field('sign_off_level_design');
-		$label_design = $field['choices'][$value_design];
-		$color_design = get_color($value_design,false);
+		// $field_design = get_field_object('sign_off_level_design');
+		// $value_design = get_field('sign_off_level_design');
+		// $label_design = $field['choices'][$value_design];
+		// $color_design = get_color($value_design,false);
 
 		?>
 <?php $args = array(
@@ -26,9 +26,9 @@
 	<div class="btn <?php echo $color; ?> pull-left" data-toggle="collapse" href="#collapseContent<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseContent<?php echo get_the_id() ?>">
 		<i class="glyphicon glyphicon-text-color"></i>   <span>Content</span>  
 	</div>
-	<div class="btn <?php echo $color_design; ?> pull-left" data-toggle="collapse" href="#collapseDesign<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo get_the_id() ?>">
+	<!-- <div class="btn <?php //echo $color_design; ?> pull-left" data-toggle="collapse" href="#collapseDesign<?php //echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo get_the_id() ?>">
 		<i class="glyphicon glyphicon-sunglasses"></i>   <span>Design</span>  
-	</div>
+	</div> -->
 	<div class="btn label-default pull-left" data-toggle="collapse" href="#collapseSignoff<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo get_the_id() ?>">
 		<i class="glyphicon glyphicon-lock"></i>   <span>Final Signoff</span>  
 	</div>

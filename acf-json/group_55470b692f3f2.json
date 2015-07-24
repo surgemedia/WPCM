@@ -3,44 +3,6 @@
     "title": "Content Page - Review Wireframe",
     "fields": [
         {
-            "key": "field_5552d5358d3ff",
-            "label": "Wireframe",
-            "name": "wireframe",
-            "prefix": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "min": "",
-            "max": "",
-            "layout": "table",
-            "button_label": "Add Row",
-            "sub_fields": [
-                {
-                    "key": "field_5552d4b68d3fe",
-                    "label": "Link",
-                    "name": "link",
-                    "prefix": "",
-                    "type": "url",
-                    "instructions": "{themename\/wireframes\/{number}",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "\/content-manger\/wireframes\/1",
-                    "placeholder": ""
-                }
-            ]
-        },
-        {
             "key": "field_554717be71ce3",
             "label": "Design",
             "name": "design",
@@ -93,7 +55,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "template-content-manager.php"
+                "value": "template-design-review.php"
             }
         ]
     ],
@@ -103,5 +65,6 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "modified": 1431498027
+    "modified": 1431571889,
+    "local": "json"
 }

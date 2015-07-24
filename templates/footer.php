@@ -1,3 +1,7 @@
+<div class="container">
+     <?php get_template_part('templates/content-manager/acf-signoff'); ?>
+  
+</div>
 <footer class="content-info" role="contentinfo">
 
   <!-- <div class="container">
@@ -13,18 +17,15 @@
   	</ul>
   </div>
   </div> -->
-  <?php
-      if (has_nav_menu('footer')) :
-        wp_nav_menu(['theme_location' => 'footer']);
-      endif;
-      ?>
+ 
  </div>
-  	
   </div>
     <?php // dynamic_sidebar('sidebar-footer'); ?>
   </div>
   <?php //get_template_part('templates/part-dev-ribbon'); ?>
   <?php get_template_part('templates/content-manager/page-single-approval'); ?>
+ 
+
  
 
 </div>

@@ -1,7 +1,10 @@
 <?php
-include ('vars-acf-fields.php');
+// include ('vars-acf-fields.php');
  ?>
 <?php
+// debug(get_id_from_slug('design-review'));
+
+$GLOBALS["WPCM_id"] = get_id_from_slug('design-review');
 $args = array('post_parent' => get_the_id(), 'post_type' => 'page', 'posts_per_page' => - 1, 'post_status' => 'any',);
 ?>
 <?php
@@ -11,17 +14,9 @@ $childs = get_children($args, $output); ?>
 <ul class="">
 <li><span class="title ">Review Panel</span></li>
   <li class="content-tab">
-  <a class="btn pull-right  " data-toggle="collapse" href="#content-childern">
+  <!-- <a class="btn pull-right  " data-toggle="collapse" href="#content-childern">
     <i class="glyphicon glyphicon-text-color"></i><span>Content Review</span>
-  </a>
-  <div id="content-childern" class="childern collapse">
-    <a class="btn pull-right  " href="<?php echo get_permalink(); ?>/?view=view-text">
-    <i class="glyphicon glyphicon-eye-open"></i><span>View Text</span>
-    </a>
-    <a class="btn pull-right  " href="<?php echo get_permalink(); ?>/?view=edit-text">
-    <i class="glyphicon glyphicon-pencil"></i><span>Edit Text</span>
-     </a>
-  </div>
+  </a> -->
   </li>
 
   <li class="design-tab">
@@ -50,15 +45,15 @@ $childs = get_children($args, $output); ?>
 
   </li>
 
-  <li> 
+  <!-- <li> 
   <a class="btn pull-right label-default pull-left disable" disabled="disabled" data-toggle="collapse" href="#collapseExample">
     <i class="glyphicon glyphicon-lock"></i>   <span>Website Review</span>
-  </a>
-  </li>
+  </a> -->
+  <!-- </li> -->
 
   <li>
-    <a href="<?php echo get_permalink($GLOBALS["WPCM_id"]); ?>" class="btn pull-right ">
-      <i class="glyphicon glyphicon-link"></i> <span>All Pages</span>
+    <a href="<?php echo get_home_url(); ?>" class="btn pull-right ">
+      <i class="glyphicon glyphicon-link"></i> <span>Page Overview</span>
     </a>
   </li>
 </ul>

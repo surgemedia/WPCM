@@ -59,8 +59,11 @@ function display_sidebar() {
       [
         'is_404',
         'is_page',
-        'template-image.php',
-        ['is_page_template', 'template-custom.php',]
+        'is_single',
+        'is_front_page',
+
+       
+        
       ]
     );
 

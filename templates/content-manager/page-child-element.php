@@ -22,16 +22,23 @@
   <span class="col-sm-5"  >
   <?php the_title();?>
   </span>
-  <a target="_blank" class="btn btn-info pull-left" href="<?php echo get_permalink();?>">View Page</a>
+  
+  <a target="_blank" class="btn btn-info pull-right" href="<?php echo get_permalink();?>">View Page</a>
+  <?php /* ?>
   <div class="btn <?php echo $color; ?> pull-left" data-toggle="collapse" href="#collapseContent<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseContent<?php echo get_the_id() ?>">
     <i class="glyphicon glyphicon-text-color"></i>   <span>Content</span>  
   </div>
+  <?php */ ?>
+  <?php /* ?>
   <div class="btn <?php echo $color_design; ?> pull-left" data-toggle="collapse" href="#collapseDesign<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo get_the_id() ?>">
     <i class="glyphicon glyphicon-picture"></i>   <span>Design</span>  
   </div>
+   <?php */ ?>
+  <?php /* ?>
   <div class="btn label-default pull-left" data-toggle="collapse" href="#collapseSignoff<?php echo get_the_id() ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo get_the_id() ?>">
     <i class="glyphicon glyphicon-lock"></i>   <span>Final Signoff</span>  
   </div>
+  <?php */ ?>
   <?php /* ?>
   <span class="label <?php echo $color; ?>"> <?php echo $label; ?></span>
   <?php */ ?>
@@ -104,11 +111,13 @@
 ?>
 <li class="child">
 
-  <a class="col-sm-5" data-toggle="collapse" href="#collapseExample<?php echo $child->ID ?>" aria-expanded="false" aria-controls="collapseExample<?php echo $child->ID ?>" ><?php echo get_the_title($child->ID);?></a>
+  <span class="col-sm-5"  ><?php echo get_the_title($child->ID);?></span>
     <?php /*
   <span class="label <?php echo $sub_color; ?>"> <?php echo $label; ?></span>
   */ ?>
-  <a target="_blank" class="btn btn-info pull-left" href="<?php echo get_permalink();?>">View Page</a>
+  <a target="_blank" class="btn btn-info pull-right" href="<?php echo get_permalink();?>">View Page</a>
+  <?php /* ?>
+
   <div class="btn <?php echo $color; ?> pull-left" data-toggle="collapse" href="#collapseContent<?php echo $child->ID ?>" aria-expanded="false" aria-controls="collapseContent<?php echo $child->ID ?>">
     <i class="glyphicon glyphicon-text-color"></i>   <span>Content</span>  
   </div>
@@ -118,7 +127,7 @@
   <div class="btn label-default pull-left" data-toggle="collapse" href="#collapseSignoff<?php echo $child->ID ?>" aria-expanded="false" aria-controls="collapseDesign<?php echo $child->ID ?>">
     <i class="glyphicon glyphicon-lock"></i>   <span>Final Signoff</span>  
   </div>
-
+ <?php */ ?>
 
 
 

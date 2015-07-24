@@ -9,7 +9,7 @@
  *
  * @link https://github.com/roots/sage/pull/1042
  */
-$GLOBALS['WPCM_id'] = 18; //Change for each website
+
 
 $sage_includes = [
   'lib/utils.php',                 // Utility functions
@@ -24,11 +24,14 @@ $sage_includes = [
   'lib/extras.php',                // Custom functions
   'lib/function-debug.php',                                 // Debug Values
   'lib/function-content-manger-get-color.php',              // Page Content Manager
-  'lib/function-truncate-content.php',                          // Testimonial
+  'lib/function-truncate-content.php',                      // Truncate Content
+  'lib/acf.php',                                            // ACF
+  'lib/function-create-design-page.php',
+  'lib/function-get_id_from_slug.php',
+  'lib/action-post-type-testimonial.php',                          
+                            
   // Wp Actions
-  // 'lib/action-post-type-people.php',                          // Mangentment Team
-  // 'lib/action-post-type-testimonial.php',                     // Testimonial
-  'lib/action-registor-menu-locations.php',            // Testimonial
+  // 'lib/action-registor-menu-locations.php',                  
 
 
 
@@ -43,3 +46,6 @@ foreach ($sage_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+
+// $GLOBALS["WPCM_id"] = get_id_from_slug('design-review'); 
